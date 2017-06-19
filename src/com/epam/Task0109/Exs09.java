@@ -82,7 +82,7 @@ public class Exs09 {
     	          	        
     			
     		}catch(NumberFormatException e){
-    			System.err.println("ERROR! One of parameters can not be converted to double.");
+    			System.err.println("ERROR! One of parameters can not be converted to integer.");
     		}
     	}        
         
