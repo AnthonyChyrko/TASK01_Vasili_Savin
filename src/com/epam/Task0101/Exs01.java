@@ -4,11 +4,6 @@ public class Exs01 {
     public static boolean isStatementCorrect(int i){
         char[] ch = String.valueOf(i).toCharArray();
 
-        if (ch.length != 4){
-            throw new IllegalArgumentException("Argument should be 4-digit number");
-        }
-
-
         int[] intArr = new int[ch.length];
 
         for (int j = 0; j < ch.length; j++){
@@ -19,7 +14,25 @@ public class Exs01 {
     }
 
     public static void main(String[] args) {
-        int i = 1234;
-        System.out.println(isStatementCorrect(i));;
+    	if (args.length == 0) {
+            System.err.println("ERROR! Enter parameter consisting of 4 figures.");
+        }else{
+        	String str = args[0];
+        	if(str.length() < 4){
+        		System.err.println("ERROR! The first parameter must consist of 4 figures");
+        	}else{
+        		if(args.length > 1 || str.length() > 4){
+        			System.err.println("WARNING! There are must be one parameter made of 4 figures. Only first 4 figures from the first parameter will be used.");
+        		}
+        		
+        		try{
+        			int i = Integer.parseInt(str);
+        			System.out.println(isStatementCorrect(i));       
+        		}catch(NumberFormatException e){
+        			System.err.println("ERROR! Parameter can not be converted to integer.");
+        		}
+        	}        		
+        }    	
+        
     }
 }

@@ -2,18 +2,10 @@ package com.epam.Task0110;
 
 import java.util.Arrays;
 
-public class Exs10 {
-    private int size;
-    private int[][] arr;
+public class Exs10 {    
 
-    public Exs10(int size){
-        if (size < 0){
-            throw new IllegalArgumentException("Size can not be a negative number");
-        }
-        this.size = size;
-    }
-
-    private void generate(){
+    public static int[][] generate(int size){
+    	int[][] arr = new int[size][size];
         for (int i = 0; i < arr.length; i++){
             if (i%2 == 0){
                 for (int j = 0; j < arr[i].length; j++){
@@ -25,21 +17,45 @@ public class Exs10 {
                 }
             }
         }
+        return arr;
     }
 
-    public void print(){
-        if (arr == null){
-            arr = new int[size][size];
-            generate();
-        }
+    public static void print(int[][] arr){        
         for(int[] i : arr){
             System.out.println(Arrays.toString(i));
         }
-
+    }
+    
+    public static boolean isParamCorrect(int size){
+    	if(size < 0){
+    		System.err.println("size must be not a negative number");
+    		return false;
+    	}else{
+    		return true;
+    	}
     }
 
     public static void main(String[] args) {
-        Exs10 array = new Exs10(11);
-        array.print();
+    	if(args.length < 1){
+    		System.err.println("ERROR! Enter 1 parameter with type \"int\"");
+    	}else{
+    		if(args.length > 1){
+    			System.err.println("WARNING! There are more than 1 parameter. Only the first will be used.");
+    		}
+    		
+    		try{
+    			int size = Integer.parseInt(args[0]);    			
+    			
+    			if(isParamCorrect(size)){   
+    				int[][] arr = generate(size);
+    				print(arr);    				
+    			}    
+    	          	        
+    			
+    		}catch(NumberFormatException e){
+    			System.err.println("ERROR! One of parameters can not be converted to integer.");
+    		}
+    	}        
+        
     }
 }

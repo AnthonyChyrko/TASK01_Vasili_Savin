@@ -16,10 +16,24 @@ public class Exs06 {
     }
 
     public static void main(String[] args) {
-        double a = 3;
-        double b = 4;
-        double c = 5;
-        System.out.println(sumMinAndMax(a, b, c));
+    	if(args.length < 3){
+    		System.err.println("ERROR! Enter 3 parameters with type \"double\"");
+    	}else{
+    		if(args.length > 3){
+    			System.err.println("WARNING! There are more than 3 parameters. Only the first 3 will be used.");
+    		}
+    		
+    		try{
+    			double a = Double.parseDouble(args[0]);
+    	        double b = Double.parseDouble(args[1]);
+    	        double c = Double.parseDouble(args[2]);    	        
+    	        
+    	        System.out.println(sumMinAndMax(a, b, c));
+    			
+    		}catch(NumberFormatException e){
+    			System.err.println("ERROR! One of parameters can not be converted to double.");
+    		}
+    	}        
     }
 }
 
