@@ -1,18 +1,6 @@
 package com.epam.Task0101;
 
 public class Exs01 {
-    public static boolean isStatementCorrect(int i){
-        char[] ch = String.valueOf(i).toCharArray();
-
-        int[] intArr = new int[ch.length];
-
-        for (int j = 0; j < ch.length; j++){
-            intArr[j] = Character.getNumericValue(ch[j]);
-        }
-
-        return (intArr[0] + intArr[1]) == (intArr[2] + intArr[3]);
-    }
-
     public static void main(String[] args) {
     	if (args.length == 0) {
             System.err.println("ERROR! Enter parameter consisting of 4 figures.");
@@ -27,12 +15,12 @@ public class Exs01 {
         		
         		try{
         			int i = Integer.parseInt(str);
-        			System.out.println(isStatementCorrect(i));       
+        			Statement statement = new Statement(i);
+        			System.out.println(statement.isStatementCorrect());       
         		}catch(NumberFormatException e){
         			System.err.println("ERROR! Parameter can not be converted to integer.");
         		}
         	}        		
-        }    	
-        
+        } 
     }
 }

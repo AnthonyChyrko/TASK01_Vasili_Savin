@@ -2,11 +2,16 @@ package com.epam.Task0103;
 
 public class Triangle {
 	
-	private double a, b, c;
+	private double a; 
+	private double b;
+	private double c;
 	
-	public Triangle(double a, double b){        
+	public Triangle(double a, double b){
+		if(a <=0 || b <= 0){
+			throw new IllegalArgumentException("Parameters 'a' and 'b' must be greater than 0.");	
+		}
         this.a = a;
-        this.b = b;
+        this.b = b; 
         this.c = Math.sqrt(a*a + b*b);
     }
 	
@@ -16,20 +21,6 @@ public class Triangle {
 
     public double getPerimeter(){
         return a + b + c;
-    }
-    
-    public boolean areParametersCorrect(){
-    	boolean flag = true;
-        if (a <= 0) {
-            System.err.println("Parameter 'a' must be greater than 0.");
-            flag = false;
-        } 
-        
-        if (b <= 0) {
-        	System.err.println("Parameter 'b' must be greater than 0.");
-        	flag = false;
-        }        
-        return flag;
-    }
+    }    
 
 }

@@ -2,6 +2,10 @@ package com.epam.Task0106;
 
 public class Exs06 {
     public static double sumMinAndMax(double a, double b, double c){
+    	if (Double.isNaN(a) || Double.isNaN(b) || Double.isNaN(c)
+                || Double.isInfinite(a) || Double.isInfinite(b) || Double.isInfinite(c)){
+    		throw new IllegalArgumentException("Invalid number"); 
+    	}
         double min = min(min(a, b), c);
         double max = max(max(a, b), c);
         return min + max;

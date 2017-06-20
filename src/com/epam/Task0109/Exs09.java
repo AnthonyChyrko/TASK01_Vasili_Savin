@@ -8,6 +8,11 @@ public class Exs09 {
         if (k > arr1.length){
             throw new IllegalArgumentException("k should be less than arr1 size");
         }
+        
+        if (k < 0){
+        	throw new IllegalArgumentException("k can not be a negative number");
+        }
+        
         int[] arr = new int[arr1.length + arr2.length];
 
         for (int i = 0; i < k; i++){
@@ -25,7 +30,10 @@ public class Exs09 {
         return arr;
     }
     
-    public static int[] generateArray(int size){		
+    public static int[] generateArray(int size){
+    	if(size < 0){
+    		throw new IllegalArgumentException("Size can not be a negative number");
+    	}
 		int[] arr = new int[size];
 		for(int i = 0; i < arr.length; i++){
 			arr[i] = (int)(Math.random()*100);
@@ -33,30 +41,7 @@ public class Exs09 {
 		return arr;
 	}
     
-    public static boolean areParamsCorrect(int size1, int size2, int k){
-    	boolean flag = true;
-    	if( size1 <= 0){
-    		System.err.println("Size1 must be a positive number");
-    		flag = false;
-    	}
-    	
-    	if( size1 <= 0){
-    		System.err.println("Size2 must be a positive number");
-    		flag = false;
-    	}
-    	
-    	if(k < 0){
-    		System.err.println("'k' must be not a negative number");
-    		flag = false;
-    	}
-    	
-    	if (k > size1){
-    		System.err.println("'k' must be less than size1");
-    		flag = false;
-    	}
-    	
-    	return flag;
-    }
+    
     
     public static void main(String[] args) {
     	if(args.length < 3){
@@ -69,16 +54,14 @@ public class Exs09 {
     		try{
     			int size1 = Integer.parseInt(args[0]);
     			int size2 = Integer.parseInt(args[1]);
-    			int k = Integer.parseInt(args[2]);
+    			int k = Integer.parseInt(args[2]);    			
     			
-    			if(areParamsCorrect(size1, size2, k)){
-    				int[] arr1 = generateArray(size1);
-    				int[] arr2 = generateArray(size2);
-    				System.out.println(Arrays.toString(arr1));
-    				System.out.println(Arrays.toString(arr2));
-    				System.out.println("k = " + k);
-    				System.out.println(Arrays.toString(join(arr1, arr2, k)));
-    			}	        
+    			int[] arr1 = generateArray(size1);
+    			int[] arr2 = generateArray(size2);
+    			System.out.println(Arrays.toString(arr1));
+    			System.out.println(Arrays.toString(arr2));
+    			System.out.println("k = " + k);
+    			System.out.println(Arrays.toString(join(arr1, arr2, k)));  				        
     	          	        
     			
     		}catch(NumberFormatException e){

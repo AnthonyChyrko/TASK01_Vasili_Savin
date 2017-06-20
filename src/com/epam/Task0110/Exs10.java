@@ -5,18 +5,22 @@ import java.util.Arrays;
 public class Exs10 {    
 
     public static int[][] generate(int size){
+    	if(size < 0){
+    		throw new IllegalArgumentException("Size can not be a negative number");
+    	}
     	int[][] arr = new int[size][size];
-        for (int i = 0; i < arr.length; i++){
-            if (i%2 == 0){
-                for (int j = 0; j < arr[i].length; j++){
-                    arr[i][j] = j + 1;
-                }
-            }else{
-                for (int j = 0; j < arr[i].length; j++){
-                    arr[i][j] = arr[i].length - j;
-                }
+        for (int i = 0; i < arr.length; i += 2){
+        	for (int j = 0; j < arr[i].length; j++){
+                arr[i][j] = j + 1;
             }
         }
+        
+        for (int i = 1; i < arr.length; i += 2){
+        	for (int j = 0; j < arr[i].length; j++){
+                arr[i][j] = arr[i].length - j;
+            }
+        }
+            
         return arr;
     }
 
@@ -24,16 +28,8 @@ public class Exs10 {
         for(int[] i : arr){
             System.out.println(Arrays.toString(i));
         }
-    }
+    }    
     
-    public static boolean isParamCorrect(int size){
-    	if(size < 0){
-    		System.err.println("size must be not a negative number");
-    		return false;
-    	}else{
-    		return true;
-    	}
-    }
 
     public static void main(String[] args) {
     	if(args.length < 1){
@@ -44,12 +40,10 @@ public class Exs10 {
     		}
     		
     		try{
-    			int size = Integer.parseInt(args[0]);    			
-    			
-    			if(isParamCorrect(size)){   
-    				int[][] arr = generate(size);
-    				print(arr);    				
-    			}    
+    			int size = Integer.parseInt(args[0]);     			
+    			   
+    			int[][] arr = generate(size);
+    			print(arr);    			    
     	          	        
     			
     		}catch(NumberFormatException e){

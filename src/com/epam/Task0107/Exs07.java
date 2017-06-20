@@ -1,33 +1,45 @@
 package com.epam.Task0107;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Exs07 {    
 
-    public static void calculate(double a, double b, double h){
-    	double x = a;         
-        double y;
-        System.out.printf("|%10s %2$10s %3$10s %2$9s\n", "x", "|", "y");
-        
-        while (x <= b){
-            y = Math.pow(Math.sin(x), 2) + Math.cos(2 * x);
-            System.out.printf("|%20.3f|%20.3f|\n", x, y);
-            x += h;
-        }
-    }
-    
-    public static boolean areParamCorrect(double a, double b, double h){
-    	boolean flag = true;
-    	if(b <= a){
-    		flag = false;
-    		System.err.println("Parameter 'b' must be greater than parameter 'a'");
+    public static List<Double[]> solve(double a, double b, double h){
+    	if(Double.isFinite(a) || Double.isFinite(b) || Double.isFinite(h) ||
+    			Double.isNaN(a) || Double.isNaN(b) || Double.isNaN(h)){
+    		throw new IllegalArgumentException("Invalid input");
     	}
     	
-    	if(h <= 0){
-    		flag = false;
-    		System.err.println("Parameter 'h' must be greater than 0");
-    	}    	
+    	if(b <= a){    		
+    		throw new IllegalArgumentException("Parameter 'b' must be greater than parameter 'a'");
+    	}
     	
-    	return flag;
+    	if(h <= 0){    		
+    		throw new IllegalArgumentException("Parameter 'h' must be greater than 0");
+    	}   
+    	
+    	double x = a;         
+        double y;
+        List<Double[]> arr = new ArrayList<>();               
+        while (x <= b){
+            y = Math.pow(Math.sin(x), 2) + Math.cos(2 * x);
+            Double[] d = new Double[2];
+            d[0] = x;
+            d[1] = y;
+            arr.add(d);            
+            x += h;
+        }
+        
+        return arr;
+    } 
+    
+    public static void print(List<Double[]> arr){
+    	for(Double[] d : arr){
+    		System.out.printf("|%20.3f|%20.3f|\n", d[0], d[1]);
+    	}    	
     }
+    
 
     public static void main(String[] args) {
     	if(args.length < 3){
@@ -42,14 +54,12 @@ public class Exs07 {
     	        double b = Double.parseDouble(args[1]);
     	        double h = Double.parseDouble(args[2]);  
     	        
-    	        System.out.println(a);
-    	        System.out.println(b);
-    	        System.out.println(h);
-    	        System.out.println(Double.MIN_VALUE);
+    	        System.out.println("a = " + a);
+    	        System.out.println("b = " + b);
+    	        System.out.println("h = " + h);    	        
     	        
-    	        if(areParamCorrect(a, b, h)){
-    	        	calculate(a, b, h);
-    	        }    	        
+    	        print(solve(a, b, h));   
+    	           	        
     			
     		}catch(NumberFormatException e){
     			System.err.println("ERROR! One of parameters can not be converted to double.");
