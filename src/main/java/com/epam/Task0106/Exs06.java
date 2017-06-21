@@ -1,4 +1,4 @@
-package com.epam.Task0106;
+package main.java.com.epam.task0106;
 
 public class Exs06 {
     public static double sumMinAndMax(double a, double b, double c){

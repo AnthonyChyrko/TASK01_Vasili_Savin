@@ -1,4 +1,4 @@
-package com.epam.Task0104;
+package main.java.com.epam.task0104;
 
 public class Point {
 	private double x;

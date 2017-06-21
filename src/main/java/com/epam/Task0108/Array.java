@@ -1,4 +1,4 @@
-package com.epam.Task0108;
+package main.java.com.epam.task0108;
 
 public class Array {	
 	private int[] arr;

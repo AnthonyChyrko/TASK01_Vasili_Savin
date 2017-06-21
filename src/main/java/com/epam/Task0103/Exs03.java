@@ -1,4 +1,4 @@
-package com.epam.Task0103;
+package main.java.com.epam.task0103;
 
 public class Exs03 {    
 

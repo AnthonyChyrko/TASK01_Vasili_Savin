@@ -1,4 +1,4 @@
-package com.epam.Task0101;
+package main.java.com.epam.task0101;
 
 public class Statement {
 	private static final int MIN_VAVULE = 1000;
