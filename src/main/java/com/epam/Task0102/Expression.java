@@ -1,4 +1,4 @@
-package main.java.com.epam.task0102;
+package main.java.com.epam.Task0102;
 
 public class Expression {
 	double a;

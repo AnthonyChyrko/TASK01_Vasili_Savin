@@ -1,4 +1,4 @@
-package main.java.com.epam.task0105;
+package main.java.com.epam.Task0105;
 
 import java.util.Arrays;
 

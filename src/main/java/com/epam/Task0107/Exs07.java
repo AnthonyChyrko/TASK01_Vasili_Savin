@@ -1,4 +1,4 @@
-package main.java.com.epam.task0107;
+package main.java.com.epam.Task0107;
 
 import java.util.ArrayList;
 import java.util.List;
