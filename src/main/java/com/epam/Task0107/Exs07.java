@@ -6,7 +6,7 @@ import java.util.List;
 public class Exs07 {    
 
     public static List<Double[]> solve(double a, double b, double h){
-    	if(Double.isFinite(a) || Double.isFinite(b) || Double.isFinite(h) ||
+    	if(Double.isInfinite(a) || Double.isInfinite(b) || Double.isInfinite(h) ||
     			Double.isNaN(a) || Double.isNaN(b) || Double.isNaN(h)){
     		throw new IllegalArgumentException("Invalid input");
     	}
@@ -23,7 +23,7 @@ public class Exs07 {
         double y;
         List<Double[]> arr = new ArrayList<>();               
         while (x <= b){
-            y = Math.pow(Math.sin(x), 2) + Math.cos(2 * x);
+            y = Math.pow(Math.sin(x), 2) - Math.cos(2 * x);
             Double[] d = new Double[2];
             d[0] = x;
             d[1] = y;
